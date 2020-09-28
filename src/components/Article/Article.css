@@ -1,0 +1,39 @@
+.Article {
+  display: table-row;
+  cursor: pointer;
+}
+
+.Article.isSelected {
+  background-color: #ddd;
+}
+
+.Article__cell {
+  display: table-cell;
+  padding: 5px 10px;
+  text-align: center;
+  position: relative;
+}
+
+.Article__cell::before {
+  content: '|';
+  position: absolute;
+  left: 0;
+}
+
+.Article__cell:first-child::before {
+  display: none;
+}
+
+.Article__link {
+  color: #000;
+  border: 0;
+  background: none;
+  font-size: 1rem;
+  font-family: serif;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.Article__link:hover {
+  color: #000;
+}

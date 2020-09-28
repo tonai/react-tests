@@ -1,0 +1,28 @@
+.Title {
+  text-align: right;
+  position: relative;
+  width: 700px;
+  margin: 10px auto;
+}
+
+.Title__title {
+  position: absolute;
+  margin: 0;
+  font-size: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.Title__button {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #ddd;
+  color: #000;
+  text-decoration: none;
+  border-radius: 5px;
+  position: relative;
+}
+
+.Title__button:hover {
+  background-color: #ccc;
+}

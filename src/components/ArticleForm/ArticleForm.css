@@ -1,0 +1,38 @@
+.ArticleForm__table {
+  display: table;
+  width: 100%;
+}
+
+.ArticleForm__row {
+  display: table-row;
+}
+
+.ArticleForm__cell {
+  display: table-cell;
+  padding: 5px 10px;
+}
+
+.ArticleForm__cell input[type=text],
+.ArticleForm__cell select,
+.ArticleForm__cell textarea {
+  width: 100%;
+}
+
+.ArticleForm__buttons {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.ArticleForm__button {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #ddd;
+  color: #000;
+  text-decoration: none;
+  border-radius: 5px;
+  border: 0;
+}
+
+.ArticleForm__button:hover {
+  background-color: #ccc;
+}

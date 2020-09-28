@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Article 1",
+    "category": 1,
+    "published": true,
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  },
+  {
+    "id": 2,
+    "title": "Article 2",
+    "category": 2,
+    "published": true,
+    "content": "Donec malesuada enim ac ipsum dictum placerat."
+  }
+]
