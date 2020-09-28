@@ -1,5 +1,5 @@
 {
-  "name": "solutionv3",
+  "name": "react-unit-tests",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -39,7 +39,7 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "cypress:test": "concurrently 'npm run start' 'npm run cypress:run' -k -s first",
+    "cypress:test": "BROWSER=none concurrently 'npm run start' 'npm run cypress:run' -k -s first",
     "cypress:run": "wait-on http://localhost:3000 && cypress run",
     "cypress:open": "cypress open"
   },
