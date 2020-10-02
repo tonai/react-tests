@@ -384,13 +384,13 @@ describe('E2E', () => {
 ## Run tests
 
 ```bash
-npm i -D concurrently wait-on
+npm i -D concurrently wait-on cross-env
 ```
 
 Add scripts in `package.json`:
 ```json
 "scripts": {
-  "cypress:test": "concurrently 'npm run start' 'npm run cypress:run' -k -s first",
+  "cypress:test": "cross-env BROWSER=none concurrently 'npm run start' 'npm run cypress:run' -k -s first",
   "cypress:run": "wait-on http://localhost:3000 && cypress run"
 }
 ```

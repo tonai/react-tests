@@ -4,13 +4,11 @@
   "private": true,
   "dependencies": {
     "classnames": "2.x",
-    "concurrently": "^5.3.0",
     "prop-types": "15.x",
     "react": "16.x",
     "react-dom": "16.x",
     "react-router-dom": "5.x",
-    "react-scripts": "3.x",
-    "wait-on": "^5.2.0"
+    "react-scripts": "3.x"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
@@ -24,13 +22,16 @@
     "@testing-library/react": "^11.0.4",
     "@testing-library/react-hooks": "^3.4.1",
     "babel-loader": "^8.1.0",
+    "concurrently": "^5.3.0",
+    "cross-env": "^7.0.2",
     "cypress": "^5.2.0",
     "cypress-plugin-snapshots": "^1.4.4",
     "enzyme": "3.x",
     "enzyme-adapter-react-16": "1.x",
     "eslint-plugin-cypress": "^2.11.1",
     "jest-fetch-mock": "^3.0.3",
-    "react-is": "^16.13.1"
+    "react-is": "^16.13.1",
+    "wait-on": "^5.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,7 +40,7 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "cypress:test": "BROWSER=none concurrently 'npm run start' 'npm run cypress:run' -k -s first",
+    "cypress:test": "cross-env BROWSER=none concurrently 'npm run start' 'npm run cypress:run' -k -s first",
     "cypress:run": "wait-on http://localhost:3000 && cypress run",
     "cypress:open": "cypress open"
   },
