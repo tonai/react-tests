@@ -255,6 +255,12 @@ Launch that script it will create and initialize the `cypress` folder:
 npm run cypress:open
 ```
 
+Update file `.gitignore` with:
+```
+/cypress/videos
+/cypress/screenshots
+```
+
 Create file `cypress/integration/e2e.js` with:
 ```js
 describe('My First Test', () => {
@@ -453,6 +459,17 @@ describe('UI', () => {
     cy.document().toMatchImageSnapshot();
   });
 });
+```
+
+If you want to update all screenshots in one shot you can update the file `cypress.json` with:
+```json
+{
+  "env": {
+    "cypress-plugin-snapshots": {
+      "updateSnapshots": true
+    }
+  }
+}
 ```
 
 

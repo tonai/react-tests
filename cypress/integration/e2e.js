@@ -63,8 +63,8 @@ describe('E2E', () => {
 
   it('Visits the app with fixtures', () => {
     cy.server();
-    cy.route('/categories', 'fixture:categories.json').as('getCategories');
-    cy.route('/articles', 'fixture:articles.json').as('getArticles');
+    cy.route('/categories', 'fixture:getCategories.json').as('getCategories');
+    cy.route('/articles', 'fixture:getArticles.json').as('getArticles');
     cy.visit('/');
     cy.get('.Article').should('have.length', 2);
   });
