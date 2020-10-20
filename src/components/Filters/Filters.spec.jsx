@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import Categories from '../../contexts/Categories';
 
@@ -16,29 +16,14 @@ describe('Filters component', () => {
       title: 'Blog post'
     }
   ];
-
-  it('renders without crashing', () => {
-    mount(<Filters />);
-  });
-
-  it('should call onFilterChanged when title changes', () => {
+  
+  it('should call onFilterChanged when filter changes', () => {
     const onFilterChanged = jest.fn();
-    const wrapper = mount(<Filters onFilterChanged={onFilterChanged} />);
-    const input = wrapper.find('input[name="title"]');
-    input.simulate('change', {target: {name: 'title', value: 'test'}});
-    expect(onFilterChanged).toBeCalledWith('title', 'test');
-  });
-
-  it('should call onFilterChanged when category changes', () => {
-    const onFilterChanged = jest.fn();
-    const wrapper = mount((
-      <Categories.Provider value={categories}>
-        <Filters onFilterChanged={onFilterChanged} />
-      </Categories.Provider>
-    ));
-    const select = wrapper.find('select');
-    select.instance().value = '1';
-    select.simulate('change');
-    expect(onFilterChanged).toBeCalledWith('category', '1');
+    render(<Categories.Provider value={categories}>
+      <Filters onFilterChanged={onFilterChanged} />
+    </Categories.Provider>);
+    fireEvent.click(screen.getByLabelText('Published'));
+    expect(onFilterChanged).toBeCalledWith('published', 'published');
   });
 });
+

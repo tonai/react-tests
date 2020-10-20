@@ -1,8 +1,8 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 import List from './List';
-import Article from '../Article/Article';
+import { MemoryRouter } from 'react-router-dom';
 
 describe('List component', () => {
   const articles = [
@@ -29,12 +29,9 @@ describe('List component', () => {
     }
   ];
 
-  it('renders without crashing', () => {
-    shallow(<List />);
-  });
-
-  it('should render 3 Article components', () => {
-    const wrapper = shallow(<List articles={articles} />);
-    expect(wrapper.find(Article).length).toEqual(3);
+  it('should render 3 Article components', async () => {
+    render(<MemoryRouter><List articles={articles} /></MemoryRouter>);
+    const elements = await screen.findAllByText(/Article/);
+    expect(elements.length).toBe(3);
   });
 });

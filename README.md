@@ -227,6 +227,11 @@ Run:
 npx run test
 ```
 
+To update the snapshots run:
+```bash
+npm run test -- --updateSnapshot
+```
+
 => problem with `inputRef.current.focus();` because there is no real browser.
 
 => **it only gets the HTML output** (not the image)

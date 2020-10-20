@@ -1,5 +1,7 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { fireEvent, render, screen } from '@testing-library/react';
+
+import Categories from '../../contexts/Categories';
 
 import ArticleForm from './ArticleForm';
 
@@ -22,35 +24,21 @@ describe('ArticleForm component', () => {
     }
   ];
 
-  it('renders without crashing', () => {
-    shallow(<ArticleForm />);
-  });
-
-  it('should call onArticleChange when the title is updated', () => {
+  it('should call onArticleChange when the article is updated', () => {
     const onArticleChange = jest.fn();
-    const wrapper = shallow(<ArticleForm article={article} categories={categories} onArticleChange={onArticleChange} />);
-    wrapper.find('input[name="title"]').simulate('change', {target: {name: 'title', value: 'test'}});
-    expect(onArticleChange).toBeCalledWith("title", "test");
-  });
-
-  it('should call onArticleChange when the category is updated', () => {
-    const onArticleChange = jest.fn();
-    const wrapper = shallow(<ArticleForm article={article} categories={categories} onArticleChange={onArticleChange} />);
-    wrapper.find('input[name="title"]').simulate('change', {target: {name: 'category', value: '2'}});
-    expect(onArticleChange).toBeCalledWith("category", 2);
-  });
-
-  it('should call onArticleChange when the title is updated', () => {
-    const onArticleChange = jest.fn();
-    const wrapper = shallow(<ArticleForm article={article} categories={categories} onArticleChange={onArticleChange} />);
-    wrapper.find('input[name="title"]').simulate('change', {target: {name: 'published', checked: false}});
+    render(<Categories.Provider value={categories}>
+      <ArticleForm article={article} onArticleChange={onArticleChange} />
+    </Categories.Provider>);
+    fireEvent.click(screen.getByLabelText(/Published/));
     expect(onArticleChange).toBeCalledWith("published", false);
   });
 
   it('should call onSubmit when the form is submitted', () => {
     const onSubmit = jest.fn();
-    const wrapper = shallow(<ArticleForm article={article} categories={categories} onSubmit={onSubmit} />);
-    wrapper.simulate('submit', {preventDefault(){}});
+    render(<Categories.Provider value={categories}>
+      <ArticleForm article={article} onSubmit={onSubmit} />
+    </Categories.Provider>);
+    fireEvent.click(screen.getByText("Submit"));
     expect(onSubmit).toBeCalled();
   });
 });
